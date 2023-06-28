@@ -21,10 +21,12 @@ a{
     color: #e60084;
 }
 body {
+    flex: 1;
     padding-top: 5vh;
     background-image: url('./img/all-safe-mr-robot.jpg');
     background-size: cover;
     background-position-y: -20px;
+
 }
 
 #main-container {
@@ -51,7 +53,6 @@ form {
 .full-box {
     flex: 1 1 100%;
     position: relative;
-    
 }
 .half-box {
     flex: 1 1 45%;
@@ -61,7 +62,6 @@ form {
 
 .spacing {
     margin-right: 2.5%;
-    
 
 }
 label {
