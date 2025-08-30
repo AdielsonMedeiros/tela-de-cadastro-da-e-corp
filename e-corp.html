@@ -1,61 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Safe</title>
+    <title>Allsafe | Cadastre-se</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
     <link rel="stylesheet" href="./ecorp.css">
 </head>
 <body>
     <div id="main-container">
-        <h1>Cadastre-se para fazer parte da Allsafe</h1>
+        <div class="logo-container">
+            <img src="./img/image.png" alt="Allsafe Logo" class="allsafe-logo">
+            <h1>Cadastre-se na Allsafe</h1>
+            <p>Faça parte da nossa comunidade e proteja sua vida digital.</p>
+        </div>
+
         <form id="register-form">
-            <div class="full-box">
+            <div class="input-group">
                 <label for="email">E-mail:</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu E-mail">
+                <input type="email" name="email" id="email" placeholder="seu.email@exemplo.com" required>
             </div>
-            <div class="half-box spacing">
+            <div class="input-group half-box">
                 <label for="name">Nome:</label>
-                <input type="text" name="lastname" id="name" placeholder="Digite seu nome">
+                <input type="text" name="name" id="name" placeholder="Seu nome" required>
             </div>
-            <div class="half-box">
+            <div class="input-group half-box">
                 <label for="lastname">Sobrenome:</label>
-                <input type="text" name="name" id="name" placeholder="Digite seu sobrenome">
+                <input type="text" name="lastname" id="lastname" placeholder="Seu sobrenome" required>
             </div>
-            <div class="half-box">
-                <label for="Telefone">Telefone:</label>
-                <input type="number" name="telefone" id="telefone" placeholder="Ex: (xx) x xxxx-xxxx">
+            <div class="input-group half-box">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" name="telefone" id="telefone" placeholder="(xx) xxxxx-xxxx">
             </div>
-            <div class="half-box">
-                <label for="endereço">Endereço:</label>
-                <input type="text" name="endereço" id="endereço" placeholder="Digite seu endereço">
+            <div class="input-group half-box">
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" id="endereco" placeholder="Rua, Número, Bairro">
             </div>
-            <div class="half-box">
-                <label for="login">Login:</label>
-                <input type="text" name="login" id="login" placeholder="Usuário">
+            <div class="input-group full-box">
+                <label for="login">Nome de Usuário:</label>
+                <input type="text" name="login" id="login" placeholder="Crie um nome de usuário" required>
             </div>
-            <div class="half-box spacing">
+            <div class="input-group full-box">
                 <label for="password">Senha:</label>
-                <input type="password" name="password" id="password" placeholder="Digite a sua senha">
+                <input type="password" name="password" id="password" placeholder="Crie uma senha forte" required>
             </div>
-            <div class="half-box">
-                <label for="passconfirmation">Password Confirmation:</label>
-                <input type="password" name="password" id="password" placeholder="Confirme a sua senha">
+            <div class="input-group full-box">
+                <label for="passconfirmation">Confirme a Senha:</label>
+                <input type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha" required>
             </div>
-            <div class="full-box">
-                <input type="checkbox" name="agreement" id="agreement">
-                <label for="agreement" id="agreement-label">Eu li aceito os <a href="">termos de uso </a></label>
+
+            <div class="agreement-group full-box">
+                <input type="checkbox" name="agreement" id="agreement" required>
+                <label for="agreement">
+                    Eu li e aceito os <a href="#" class="terms-link">termos de uso</a>.
+                </label>
             </div>
-            <div class= "full-box">
-                <input type="submit" id="btn-submit" value="Registrar">
-            </div>
-        </form>
-        </form>
-        </form>
+
+            <button type="submit" id="btn-submit">Registrar</button>
         </form>
     </div>
+    <div class="glitch-overlay"></div>
     <p class="error-validation template"></p>
-    <script>src="e-corp.js"</script>
+    <script src="./script.js"></script>
 </body>
 </html>

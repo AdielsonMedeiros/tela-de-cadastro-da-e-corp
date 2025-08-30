@@ -1,112 +1,276 @@
+/* Importação da fonte Roboto Mono do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
 
-*{
+:root {
+    --primary-color: #e60084; /* Rosa da Allsafe */
+    --secondary-color: #0d1a26; /* Azul escuro quase preto */
+    --text-color: #e0e0e0; /* Cinza claro para o texto */
+    --input-border: #444; /* Borda dos inputs */
+    --hover-color: #c40070; /* Rosa mais escuro para hover */
+    --error-color: #ff3366; /* Vermelho vibrante para erros */
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: helvetica,sans-serif;
-    color : #323232;
-    border: none;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
 }
 
-input,label {
-    display:block;
-    width:100%;
-
-}
-input:focus, label:focus {
-    outline: none;
-}
-
-a{
-    color: #e60084;
-}
 body {
-    flex: 1;
-    padding-top: 5vh;
-    background-image: url('./img/all-safe-mr-robot.jpg');
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    background-image: url('./img/all-safe-mr-robot.jpg'); /* Imagem de fundo sutil inspirada em Mr. Robot */
     background-size: cover;
-    background-position-y: -20px;
+    background-position: center;
+    position: relative; /* Para o overlay */
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+}
 
+/* Efeito de Glitch sutil no fundo */
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.02) 0%,
+        rgba(0, 255, 0, 0.02) 50%,
+        rgba(0, 0, 255, 0.02) 100%
+    );
+    opacity: 0.8;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: glitch-bg 10s infinite alternate;
+}
+
+@keyframes glitch-bg {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
 }
 
 #main-container {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 25px;
-
-}
-#main-container h1{
+    width: 90%;
+    max-width: 550px;
+    background-color: rgba(18, 29, 39, 0.95); /* Fundo semi-transparente escuro */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     text-align: center;
+    position: relative;
+    z-index: 10; /* Garante que o container fique acima do overlay */
+    border: 1px solid rgba(var(--primary-color), 0.3); /* Borda sutil neon */
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.allsafe-logo {
+    width: 100px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 8px var(--primary-color)); /* Efeito neon na logo */
+}
+
+#main-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color); /* Título em rosa */
+    text-shadow: 0 0 5px rgba(var(--primary-color), 0.7); /* Sombra neon */
+}
+
+#main-container p {
+    font-size: 1rem;
+    color: var(--text-color);
     margin-bottom: 25px;
-    font-size: 1.6rem; /* adapta ao elemento root */
 }
 
 form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 20px; /* Espaçamento mais generoso entre os campos */
+    margin-top: 20px;
+}
 
-}
-.full-box {
-    flex: 1 1 100%;
+.input-group {
     position: relative;
+    width: 100%; /* Por padrão, ocupa a largura total */
 }
+
 .half-box {
-    flex: 1 1 45%;
-    position: relative;
-    margin-right: 2.5%;
+    width: calc(50% - 10px); /* 50% menos metade do gap */
 }
 
-.spacing {
-    margin-right: 2.5%;
-
-}
 label {
+    display: block;
+    text-align: left;
     font-weight: bold;
-    font-size: .8rem;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    opacity: 0.9;
 }
+
 input {
-    border-bottom: 2px solid #323232;
-    padding: 10px;
-    font-size: .9rem;
-    margin-bottom: 40px;
-
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo do input semi-transparente */
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
+
+input::placeholder {
+    color: rgba(var(--text-color), 0.6);
+}
+
 input:focus {
-    border-color: #e60084;
-
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color), 0.5); /* Efeito neon no foco */
+    background-color: rgba(255, 255, 255, 0.1);
 }
-input[type="submit"] {
-    background-color: #e60084;
+
+/* Estilo para o grupo de termos de uso */
+.agreement-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    text-align: left; /* Alinha o texto à esquerda */
+    width: 100%;
+}
+
+.agreement-group input[type="checkbox"] {
+    width: auto;
+    height: 18px; /* Tamanho do checkbox */
+    accent-color: var(--primary-color); /* Cor do "check" */
+    margin: 0; /* Reseta margem padrão */
+}
+
+.agreement-group label {
+    margin-bottom: 0; /* Reseta margem padrão do label */
+    font-size: 0.9rem;
+    display: inline-block; /* Para alinhar com o checkbox */
+}
+
+.terms-link {
+    font-weight: bold;
+}
+
+#btn-submit {
+    width: 100%;
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
-    border-radius: 20px;
-    height: 40px;
+    border-radius: 25px;
+    height: 50px;
     cursor: pointer;
-}
-#agreement {
-    margin-right: 5px;
-
-}
-#agreement, #agreement-label {
-    display: inline-block;
-    width: auto;
-
-
-
+    margin-top: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(var(--primary-color), 0.4);
 }
 
+#btn-submit:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px); /* Efeito sutil de levantar */
+    box-shadow: 0 8px 20px rgba(var(--primary-color), 0.6);
+}
+
+#btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(var(--primary-color), 0.4);
+}
+
+
+/* Mensagens de validação de erro */
 .error-validation {
-    color: #ff1a1f;
-    position: absolute;
-    top: 57px;
-    font-size: .8rem;
-
+    color: var(--error-color);
+    font-size: 0.8rem;
+    text-align: left;
+    margin-top: 5px;
+    position: absolute; /* Para posicionar próximo ao input */
+    left: 0;
+    bottom: -18px; /* Ajuste para ficar abaixo do input */
+    width: 100%;
 }
-.template{
+
+.input-group input.error {
+    border-color: var(--error-color);
+    box-shadow: 0 0 5px rgba(var(--error-color), 0.7);
+}
+
+
+.template {
     display: none;
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+    #main-container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    .half-box {
+        width: 100%; /* Campos ficam em coluna em telas menores */
+    }
+
+    #main-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .allsafe-logo {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main-container h1 {
+        font-size: 1.5rem;
+    }
+
+    #main-container p {
+        font-size: 0.9rem;
+    }
+
+    input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    #btn-submit {
+        height: 45px;
+        font-size: 1rem;
+    }
+}
