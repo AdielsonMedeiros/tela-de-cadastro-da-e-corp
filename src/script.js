@@ -1,4 +1,4 @@
-// O objeto de configuração continua lendo do .env, o que está perfeito.
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -8,17 +8,17 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Inicialize o Firebase
+
 firebase.initializeApp(firebaseConfig);
 
-// --- NOVO: Obtenha as instâncias dos serviços que vamos usar ---
-const db = firebase.firestore();      // Instância do Firestore (Banco de Dados)
-const auth = firebase.auth();         // Instância do Authentication (Login e Senha)
+
+const db = firebase.firestore();      
+const auth = firebase.auth();         
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // A seleção dos elementos do formulário continua a mesma, está correta.
+    
     const form = document.getElementById('register-form');
     const email = document.getElementById('email');
     const nameInput = document.getElementById('name');
@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.innerText = 'Enviando...';
 
             try {
-                // --- LÓGICA DE CADASTRO CORRIGIDA ---
+                
 
-                // PASSO 1: Criar o usuário no Firebase Authentication com e-mail e senha.
+                
                 const userCredential = await auth.createUserWithEmailAndPassword(email.value.trim(), password.value.trim());
                 const user = userCredential.user;
 
                 console.log("Usuário criado com sucesso no Auth! UID:", user.uid);
 
-                // PASSO 2: Criar um objeto com os dados ADICIONAIS do perfil do usuário.
-                // NUNCA inclua a senha aqui. O Auth já a salvou de forma segura.
+                
+                
                 const userProfileData = {
                     email: email.value.trim(),
                     nome: nameInput.value.trim(),
@@ -58,23 +58,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     telefone: telefone.value.trim(),
                     endereco: endereco.value.trim(),
                     login: login.value.trim(),
-                    timestamp: new Date() // Data de criação do perfil
+                    timestamp: new Date() 
                 };
 
-                // PASSO 3: Salvar os dados do perfil no Firestore.
-                // Usamos .doc(user.uid) para criar um documento com o ID igual ao ID do usuário.
+                
+                
                 await db.collection("usuarios").doc(user.uid).set(userProfileData);
                 
                 console.log("Dados do perfil salvos no Firestore com o ID:", user.uid);
 
-                alert('Usuário registrado com sucesso!');
-                form.reset(); // Limpa o formulário
+                
+                
+                await user.sendEmailVerification();
+                console.log("E-mail de verificação enviado.");
+
+                
+                alert('Usuário registrado com sucesso! Um link de verificação foi enviado para o seu e-mail. Por favor, verifique sua caixa de entrada.');
+                
+                
+                form.reset(); 
 
             } catch (error) {
-                // --- NOVO: Tratamento de erros mais específico para o Auth ---
+                
                 console.error("Erro ao registrar usuário: ", error.code, error.message);
 
-                // Fornece feedback útil para o usuário
+                
                 if (error.code === 'auth/email-already-in-use') {
                     alert('Este endereço de e-mail já está cadastrado.');
                     setError(email, 'Este e-mail já está em uso.');
@@ -89,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } finally {
-                // Isso continua igual, reabilitando o botão no final.
+                
                 submitButton.disabled = false;
                 submitButton.innerText = 'Registrar';
             }
@@ -98,11 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Todas as suas funções de validação (validateInputs, setError, setSuccess, isEmailValid)
-    // podem continuar exatamente as mesmas. Elas estão perfeitas.
+    
+    
 
     const validateInputs = () => {
-        // ... seu código de validação original aqui ...
         const emailValue = email.value.trim();
         const nameValue = nameInput.value.trim();
         const lastnameValue = lastname.value.trim();

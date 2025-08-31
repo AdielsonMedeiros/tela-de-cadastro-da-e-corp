@@ -1,4 +1,4 @@
-/* Importação da fonte Roboto Mono do Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
 
 :root {
@@ -24,14 +24,14 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--secondary-color);
-    background-image: url('./img/all-safe-mr-robot.jpg'); /* Imagem de fundo sutil inspirada em Mr. Robot */
+    background-image: url('./img/all-safe-mr-robot.jpg');
     background-size: cover;
     background-position: center;
-    position: relative; /* Para o overlay */
-    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Efeito de Glitch sutil no fundo */
+
 .glitch-overlay {
     position: absolute;
     top: 0;
@@ -73,14 +73,14 @@ a:hover {
 #main-container {
     width: 90%;
     max-width: 550px;
-    background-color: rgba(18, 29, 39, 0.95); /* Fundo semi-transparente escuro */
+    background-color: rgba(18, 29, 39, 0.95);
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     text-align: center;
     position: relative;
-    z-index: 10; /* Garante que o container fique acima do overlay */
-    border: 1px solid rgba(var(--primary-color), 0.3); /* Borda sutil neon */
+    z-index: 10;
+    border: 1px solid rgba(var(--primary-color), 0.3);
 }
 
 .logo-container {
@@ -90,14 +90,14 @@ a:hover {
 .allsafe-logo {
     width: 100px;
     margin-bottom: 15px;
-    filter: drop-shadow(0 0 8px var(--primary-color)); /* Efeito neon na logo */
+    filter: drop-shadow(0 0 8px var(--primary-color));
 }
 
 #main-container h1 {
     font-size: 2.2rem;
     margin-bottom: 10px;
-    color: var(--primary-color); /* Título em rosa */
-    text-shadow: 0 0 5px rgba(var(--primary-color), 0.7); /* Sombra neon */
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(var(--primary-color), 0.7);
 }
 
 #main-container p {
@@ -109,17 +109,17 @@ a:hover {
 form {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Espaçamento mais generoso entre os campos */
+    gap: 20px;
     margin-top: 20px;
 }
 
 .input-group {
     position: relative;
-    width: 100%; /* Por padrão, ocupa a largura total */
+    width: 100%;
 }
 
 .half-box {
-    width: calc(50% - 10px); /* 50% menos metade do gap */
+    width: calc(50% - 10px);
 }
 
 label {
@@ -134,7 +134,7 @@ label {
 
 input {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo do input semi-transparente */
+    background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--input-border);
     border-radius: 5px;
     padding: 12px 15px;
@@ -150,31 +150,31 @@ input::placeholder {
 input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 8px rgba(var(--primary-color), 0.5); /* Efeito neon no foco */
+    box-shadow: 0 0 8px rgba(var(--primary-color), 0.5);
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Estilo para o grupo de termos de uso */
+
 .agreement-group {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 15px;
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left;
     width: 100%;
 }
 
 .agreement-group input[type="checkbox"] {
     width: auto;
-    height: 18px; /* Tamanho do checkbox */
-    accent-color: var(--primary-color); /* Cor do "check" */
-    margin: 0; /* Reseta margem padrão */
+    height: 18px;
+    accent-color: var(--primary-color);
+    margin: 0;
 }
 
 .agreement-group label {
-    margin-bottom: 0; /* Reseta margem padrão do label */
+    margin-bottom: 0;
     font-size: 0.9rem;
-    display: inline-block; /* Para alinhar com o checkbox */
+    display: inline-block;
 }
 
 .terms-link {
@@ -199,7 +199,7 @@ input:focus {
 
 #btn-submit:hover {
     background-color: var(--hover-color);
-    transform: translateY(-2px); /* Efeito sutil de levantar */
+    transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(var(--primary-color), 0.6);
 }
 
@@ -209,15 +209,15 @@ input:focus {
 }
 
 
-/* Mensagens de validação de erro */
+
 .error-validation {
     color: var(--error-color);
     font-size: 0.8rem;
     text-align: left;
     margin-top: 5px;
-    position: absolute; /* Para posicionar próximo ao input */
+    position: absolute;
     left: 0;
-    bottom: -18px; /* Ajuste para ficar abaixo do input */
+    bottom: -18px;
     width: 100%;
 }
 
@@ -231,7 +231,7 @@ input:focus {
     display: none;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     #main-container {
         padding: 30px 20px;
@@ -239,7 +239,7 @@ input:focus {
     }
 
     .half-box {
-        width: 100%; /* Campos ficam em coluna em telas menores */
+        width: 100%;
     }
 
     #main-container h1 {
